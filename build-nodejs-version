@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+NODE_VERSION=$1
+
+# Prepare environment
+echo "Preparing environment ..."
+
+BUILDDIR=build-v${NODE_VERSION}
+NODE_DIR=node-v${NODE_VERSION}
+SOURCE_URL="https://nodejs.org/dist/v${NODE_VERSION}/${NODE_DIR}.tar.gz"
+PREFIX=/opt/nodejs/${NODE_VERSION}
+NPROC=$(nproc)
+CC=gcc10-gcc
+CXX=gcc10-g++
+export CC CXX
+
+# Build and test
+echo "Building and testing Node.js ${NODE_VERSION} ..."
+
+rm -rf ${BUILDDIR}
+mkdir -p ${BUILDDIR}
+pushd ${BUILDDIR}
+wget "${SOURCE_URL}"
+tar xf ${NODE_DIR}.tar.gz
+pushd ${NODE_DIR}
+./configure --prefix=${PREFIX}
+make clean
+make -j${NPROC}
+make -j${NPROC} test-only
+make -j${NPROC} install
+popd
+popd

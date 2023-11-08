@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Install prerequisites
+echo "Installing prerequisites ..."
+
+yum -y update
+yum groupinstall -y "Development Tools"
+yum install -y git libffi-devel openssl-devel openssl-devel \
+  dbus-devel p11-kit-devel \
+  python3-devel rust cargo clang llvm-devel readline-devel \
+  libcurl-devel expat-devel libarchive-devel libpng-devel \
+  libspectre-devel bzip2-devel gperf libjpeg-turbo-devel \
+  openjpeg2-devel libtiff-devel lcms2-devel \
+  gcc10-c++ gcc10-gdb-plugin gcc10-plugin-devel gcc10 gcc10-binutils \
+  gcc10-binutils-devel gcc10-binutils-gold clang-devel clang-tools-extra \
+  curl procps wget
