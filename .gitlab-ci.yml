@@ -3,11 +3,15 @@ build nodejs:
     - ecgalaxy-docker
   image:
     name: index.docker.io/library/amazonlinux:2
+  only:
+    refs:
+      - master
   script:
     - ./init-environment
     - NODE_MAJOR_VERSION="${NODE_MAJOR_VERSION:=20}"
     - NODE_VERSION=$(python3 get-nodejs-latest.py ${NODE_MAJOR_VERSION})
     - ./build-nodejs-version ${NODE_VERSION} 1> /dev/null
+    - curl -sL -o /opt/nodejs/${NODE_VERSION}/LICENSE https://raw.githubusercontent.com/nodejs/node/main/LICENSE
     - mkdir -p artifacts
     - tar -czf artifacts/nodejs-v${NODE_VERSION}.tar.gz /opt/nodejs/${NODE_VERSION}
     - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file artifacts/nodejs-v${NODE_VERSION}.tar.gz "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/${CI_PROJECT_NAME}/${NODE_VERSION}/nodejs-v${NODE_VERSION}.tar.gz"'
