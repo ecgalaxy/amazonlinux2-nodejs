@@ -24,7 +24,7 @@ pushd ${BUILDDIR}
 wget "${SOURCE_URL}"
 tar xf ${NODE_DIR}.tar.gz
 pushd ${NODE_DIR}
-git apply ${SCRIPT_DIR}/assets/toolchain.gypi.patch || true
+git apply ${SCRIPT_DIR}/assets/toolchain.gypi.patch --verbose --directory ${BUILDDIR}/${NODE_DIR} || true
 ./configure --prefix=${PREFIX}
 make clean
 make -j${NPROC}
