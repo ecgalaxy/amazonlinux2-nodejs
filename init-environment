@@ -3,6 +3,8 @@
 # Install prerequisites
 echo "Installing prerequisites ..."
 
+amazon-linux-extras install python3.8
+
 yum -y update
 yum groupinstall -y "Development Tools"
 yum install -y git libffi-devel openssl-devel openssl-devel \
