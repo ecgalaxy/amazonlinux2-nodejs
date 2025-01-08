@@ -8,7 +8,7 @@ build nodejs:
       - master
   script:
     - ./init-environment
-    - NODE_MAJOR_VERSION="${NODE_MAJOR_VERSION:=20}"
+    - NODE_MAJOR_VERSION="${NODE_MAJOR_VERSION:=22}"
     - NODE_VERSION=$(python3 get-nodejs-latest.py ${NODE_MAJOR_VERSION})
     - ./build-nodejs-version ${NODE_VERSION} 1> /dev/null
     - curl -sL -o /opt/nodejs/${NODE_VERSION}/LICENSE https://raw.githubusercontent.com/nodejs/node/main/LICENSE

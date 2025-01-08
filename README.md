@@ -1,7 +1,7 @@
 amazonlinux2-nodejs
 ===================
 
-A GitLab pipeline to build [Node.js](https://nodejs.org/) 18.x, 20.x and 22.x for Amazon Linux 2.
+A GitLab pipeline to build [Node.js](https://nodejs.org/) 18.x, 20.x, 22.x and 23.x for Amazon Linux 2.
 
 Rationale
 ---------
@@ -24,7 +24,7 @@ The pipeline launches an `amazonlinux:2` container and:
 Downloads
 ---------
 
-Node.js 18.x, 20.x and 22.x builds for Amazon Linux 2 can be downloaded from the
+Node.js 18.x, 20.x, 22.x and 23.x builds for Amazon Linux 2 can be downloaded from the
 [Package Registry](https://code.europa.eu/ecgalaxy/amazonlinux2-nodejs/-/packages).
 
 Automated setup
@@ -41,4 +41,4 @@ Original code provided by AWS.
 Author Information
 ------------------
 
-ECGALAXY team.
+[ECGALAXY](https://code.europa.eu/groups/ecgalaxy/-/wikis/home) team.
